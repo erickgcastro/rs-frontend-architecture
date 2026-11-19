@@ -7,7 +7,7 @@ View -> ViewModel -> Use Case -> Repository -> Data Source
 Service -> Use Case -> Repository -> Data Source
 ```
 
-Copy them into a project, and Claude Code follows them in every session. The core rules work on any stack. Flutter with Riverpod has a ready-made profile, and React with Next.js has two: one built on Jotai and one built on Zustand. On any other stack, Claude writes the profile itself in the first session.
+Copy them into a project, and Claude Code follows them in every session. The core rules work on any stack. Flutter with Riverpod has a ready-made profile, and React with Next.js has three: one built on Jotai, one built on Zustand, and a lighter one built on domain hooks. On any other stack, Claude writes the profile itself in the first session.
 
 ## Adopt it
 
@@ -46,6 +46,17 @@ cp -R "$KIT/stacks/react-zustand/." "$RULES/stack/"
 cp "$KIT/setup/"*.md "$RULES/"
 ```
 
+**Next.js with domain hooks** (App Router, TanStack Query hooks per domain module, static Repositories over axios, Zustand, next-intl, zod):
+
+```sh
+KIT=/path/to/frontend-architecture
+RULES=.claude/rules/frontend-architecture
+mkdir -p "$RULES/core" "$RULES/stack"
+cp -R "$KIT/core/." "$RULES/core/"
+cp -R "$KIT/stacks/nextjs-domain-hooks/." "$RULES/stack/"
+cp "$KIT/setup/"*.md "$RULES/"
+```
+
 **Any other stack:** run the same commands, with `stacks/_template` in place of `stacks/flutter-riverpod`.
 
 Commit the copied files so your team gets them. No change to your `CLAUDE.md` is needed.
@@ -74,6 +85,7 @@ Run `/context` to see which rule files are loaded.
 | `stacks/flutter-riverpod/` | `$RULES/stack/` | Role map, plus rules that load when Claude touches matching files. |
 | `stacks/react/` | `$RULES/stack/` | React + Next.js role map, matching rules, and a packages-by-layer guide. |
 | `stacks/react-zustand/` | `$RULES/stack/` | The same React + Next.js profile, with a plain container for wiring and Zustand for view state. |
+| `stacks/nextjs-domain-hooks/` | `$RULES/stack/` | A lighter Next.js profile: domain hooks play the Use Case, static Repositories replace the container, and next-intl handles locales. |
 | `stacks/_template/` | `$RULES/stack/` | Blank profile for other stacks. |
 
 This README isn't copied, because every `.md` file under `.claude/rules/` gets loaded.
