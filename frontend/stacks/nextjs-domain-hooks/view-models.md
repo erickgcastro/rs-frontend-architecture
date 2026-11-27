@@ -64,7 +64,7 @@ export function useProductForm() {
 
 ## Rules
 
-- Reach data only through `<Module>Queries` hooks. Never import `@/repository`, `httpClient` or `axios`.
+- Reach data only through `<Module>Queries` hooks. Never import a module's `http/` folder, `httpClient` or `axios`.
 - Validate input with the DTO's zod schema (`safeParse`) before calling a mutation, and map the failing field to an i18n message.
 - Handle a screen's errors here: `try/catch` around `mutateAsync`, or the query's `isError` and `error`. The message comes from `useApiErrorMessage()` or an i18n key, never from `error.message`.
 - Never handle the session-expired 401. `httpClient` already refreshes the token or logs out.

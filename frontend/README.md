@@ -46,7 +46,7 @@ cp -R "$KIT/frontend/stacks/react-zustand/." "$RULES/stack/"
 cp "$KIT/frontend/setup/"*.md "$RULES/"
 ```
 
-**Next.js with domain hooks** (App Router, TanStack Query hooks per domain module, static Repositories over axios, Zustand, next-intl, zod):
+**Next.js with domain hooks** (App Router, TanStack Query hooks and static services per domain module over axios, Zustand, next-intl, zod):
 
 ```sh
 KIT=/path/to/frontend-architecture
@@ -85,7 +85,7 @@ Run `/context` to see which rule files are loaded.
 | `stacks/flutter-riverpod/` | `$RULES/stack/` | Role map, plus rules that load when Claude touches matching files. |
 | `stacks/react/` | `$RULES/stack/` | React + Next.js role map, matching rules, and a packages-by-layer guide. |
 | `stacks/react-zustand/` | `$RULES/stack/` | The same React + Next.js profile, with a plain container for wiring and Zustand for view state. |
-| `stacks/nextjs-domain-hooks/` | `$RULES/stack/` | A lighter Next.js profile: domain hooks play the Use Case, static Repositories replace the container, and next-intl handles locales. |
+| `stacks/nextjs-domain-hooks/` | `$RULES/stack/` | A lighter Next.js profile: domain hooks play the Use Case, static services registered in each domain module replace the container, and next-intl handles locales. |
 | `stacks/_template/` | `$RULES/stack/` | Blank profile for other stacks. |
 
 This README isn't copied, because every `.md` file under `.claude/rules/` gets loaded.
