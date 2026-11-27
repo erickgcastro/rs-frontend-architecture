@@ -50,7 +50,7 @@ httpClient.interceptors.response.use(undefined, async (error: unknown) => {
   }
 
   try {
-    refreshing ??= Repository.auth
+    refreshing ??= Service.auth
       .refreshSession({ refreshToken: session.refreshToken })
       .then(saveSession)
       .finally(() => {
@@ -68,7 +68,7 @@ httpClient.interceptors.response.use(undefined, async (error: unknown) => {
 ```
 
 - Each request retries at most once. A second 401, or a failed refresh, logs out.
-- Calling `Repository.auth.refreshSession` from here is the stack's only lower-to-higher call. Do not add another without asking the user.
+- `Service` here is the auth module's registry, imported from `@/domain/auth/http`. Calling `Service.auth.refreshSession` from here is the stack's only lower-to-higher call. Do not add another without asking the user.
 
 ## QueryClient
 
