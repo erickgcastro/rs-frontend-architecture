@@ -6,7 +6,7 @@ paths:
 
 # Next.js Domain Hooks: Contracts
 
-Each business domain is a module in `src/domain/<module>/`, always with the same three folders. Types shared by every module live in `src/domain/shared/`.
+Each business domain is a module in `src/domain/<module>/`, always with the same four folders. Types shared by every module live in `src/domain/shared/`.
 
 ```text
 src/domain/product/
@@ -14,10 +14,13 @@ src/domain/product/
   dto/create-product.dto.ts      # zod schema and type of what is sent
   dto/update-product.dto.ts
   dto/list-products.dto.ts       # list filters
+  http/product.service.ts        # see stack/repositories.md
+  http/index.ts                  # the module's service registry
   hooks/product.queries.ts       # see stack/use-cases.md
   hooks/index.ts
 src/domain/shared/
   entities/api-error.ts          # ApiError, ApiErrorCode
+  entities/message.ts            # Success, Message: bodies of responses without a resource
   entities/pagination.ts         # Paginated<T>, PaginationMeta
   dto/pagination.dto.ts          # paginationSchema
 ```
@@ -93,5 +96,5 @@ export interface ApiError {
 
 ## Rules
 
-- Contracts import only `zod` and other Contracts. No React, axios, Repository or hook.
-- Repositories import them with `import type`.
+- Contracts import only `zod` and other Contracts. No React, axios, service or hook.
+- Domain services import them with `import type`.

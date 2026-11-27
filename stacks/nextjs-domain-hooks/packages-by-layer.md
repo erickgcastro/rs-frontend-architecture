@@ -14,8 +14,8 @@ Grouped in layer order, from the bottom of the chain up.
 | Package | Major version | Layer | Why this layer |
 |---|---|---|---|
 | zod | 4 | Contracts | DTOs are zod schemas with inferred types. Persisted stores also validate `localStorage` with it |
-| axios | 1 | Data Source | Only `src/config/axios-client.ts` creates the instance, and only Repositories call it. Its interceptors hold the auth header and the token refresh |
-| @tanstack/react-query | 5 | Use Case | Domain hooks wrap each Repository method in `useQuery` or `useMutation`, and invalidation keeps every View in sync |
+| axios | 1 | Data Source | Only `src/config/axios-client.ts` creates the instance, and only domain services in `src/domain/<module>/http/` call it. Its interceptors hold the auth header and the token refresh |
+| @tanstack/react-query | 5 | Use Case | Domain hooks wrap each service method in `useQuery` or `useMutation`, and invalidation keeps every View in sync |
 | @tanstack/react-query-devtools | 5 | Use Case tooling | Mounted once in `QueryProvider` |
 | zustand | 5 | ViewModel | Client state shared by several components, one store per file in `src/lib/stores/`. API data stays in the query cache |
 | react-hook-form | 7 | Local UI state | Field state for larger forms. Submitting still goes through the ViewModel |
@@ -27,8 +27,8 @@ Grouped in layer order, from the bottom of the chain up.
 
 ## Layers with no package
 
-- **Repository** needs no package beyond the `httpClient` instance. It is a static class over the `Service` base in `src/services/`.
-- **Dependency wiring** needs none. The `Repository` registry in `src/repository/index.ts` is a static class.
+- **Repository** needs no package beyond the `httpClient` instance. Each domain service is a static class over the `Service` base in `src/services/`.
+- **Dependency wiring** needs none. Each module's `Service` registry in `http/index.ts` is a static class.
 
 ## Avoid with this stack
 

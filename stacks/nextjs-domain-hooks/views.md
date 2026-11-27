@@ -118,6 +118,6 @@ A sub-component of the same flow sits in the folder with its own pair, such as `
 
 ## Rules
 
-- A View never imports `@/repository`, `@/config/*` or `axios`.
+- A View never imports a module's `http/` folder, `@/config/*` or `axios`.
 - A View never creates a `QueryClient`, and never writes server data into a store.
 - Images go through `next/image`, and decorative ones get `alt=""`.
