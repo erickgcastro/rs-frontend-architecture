@@ -11,7 +11,7 @@ Copy them into a project, and Claude Code follows them in every session. The cor
 
 ## Adopt it
 
-Run these from the root of the target project, with `KIT` pointing at this directory.
+Run these from the root of the target project, with `KIT` pointing at this repository.
 
 **Flutter with Riverpod:**
 
@@ -19,9 +19,9 @@ Run these from the root of the target project, with `KIT` pointing at this direc
 KIT=/path/to/frontend-architecture
 RULES=.claude/rules/frontend-architecture
 mkdir -p "$RULES/core" "$RULES/stack"
-cp -R "$KIT/core/." "$RULES/core/"
-cp -R "$KIT/stacks/flutter-riverpod/." "$RULES/stack/"
-cp "$KIT/setup/"*.md "$RULES/"
+cp -R "$KIT/frontend/core/." "$RULES/core/"
+cp -R "$KIT/frontend/stacks/flutter-riverpod/." "$RULES/stack/"
+cp "$KIT/frontend/setup/"*.md "$RULES/"
 ```
 
 **React + Next.js** (App Router, TanStack Query, Jotai, zod):
@@ -30,9 +30,9 @@ cp "$KIT/setup/"*.md "$RULES/"
 KIT=/path/to/frontend-architecture
 RULES=.claude/rules/frontend-architecture
 mkdir -p "$RULES/core" "$RULES/stack"
-cp -R "$KIT/core/." "$RULES/core/"
-cp -R "$KIT/stacks/react/." "$RULES/stack/"
-cp "$KIT/setup/"*.md "$RULES/"
+cp -R "$KIT/frontend/core/." "$RULES/core/"
+cp -R "$KIT/frontend/stacks/react/." "$RULES/stack/"
+cp "$KIT/frontend/setup/"*.md "$RULES/"
 ```
 
 **React + Next.js with Zustand** (App Router, TanStack Query, Zustand, zod):
@@ -41,9 +41,9 @@ cp "$KIT/setup/"*.md "$RULES/"
 KIT=/path/to/frontend-architecture
 RULES=.claude/rules/frontend-architecture
 mkdir -p "$RULES/core" "$RULES/stack"
-cp -R "$KIT/core/." "$RULES/core/"
-cp -R "$KIT/stacks/react-zustand/." "$RULES/stack/"
-cp "$KIT/setup/"*.md "$RULES/"
+cp -R "$KIT/frontend/core/." "$RULES/core/"
+cp -R "$KIT/frontend/stacks/react-zustand/." "$RULES/stack/"
+cp "$KIT/frontend/setup/"*.md "$RULES/"
 ```
 
 **Next.js with domain hooks** (App Router, TanStack Query hooks per domain module, static Repositories over axios, Zustand, next-intl, zod):
@@ -52,9 +52,9 @@ cp "$KIT/setup/"*.md "$RULES/"
 KIT=/path/to/frontend-architecture
 RULES=.claude/rules/frontend-architecture
 mkdir -p "$RULES/core" "$RULES/stack"
-cp -R "$KIT/core/." "$RULES/core/"
-cp -R "$KIT/stacks/nextjs-domain-hooks/." "$RULES/stack/"
-cp "$KIT/setup/"*.md "$RULES/"
+cp -R "$KIT/frontend/core/." "$RULES/core/"
+cp -R "$KIT/frontend/stacks/nextjs-domain-hooks/." "$RULES/stack/"
+cp "$KIT/frontend/setup/"*.md "$RULES/"
 ```
 
 **Any other stack:** run the same commands, with `stacks/_template` in place of `stacks/flutter-riverpod`.
@@ -101,7 +101,7 @@ This README isn't copied, because every `.md` file under `.claude/rules/` gets l
 Re-copy `core/` only:
 
 ```sh
-cp -R "$KIT/core/." "$RULES/core/"
+cp -R "$KIT/frontend/core/." "$RULES/core/"
 ```
 
 `stack/` and `project-context.md` hold your project's content, so merge any changes to those by hand.
